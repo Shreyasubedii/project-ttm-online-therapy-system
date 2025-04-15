@@ -12,7 +12,7 @@ html, body {
   }
   
 .full-height {
-    background: rgba(26, 26, 26, 0.548);
+    /* background: rgba(26, 26, 26, 0.548); */
     background-attachment: fixed;
     max-height: 100vh;
     height: 100vh;
@@ -25,17 +25,17 @@ table{
     
 }
 .heading-text{
-    color: white;
+    color: rgb(99, 89, 89);
     font-size: 42px;
     font-weight: 700;
-    line-height: 63px;
-    margin-top: 15%;
+    line-height: 60px;
+    margin-top: 10%;
     text-align: center;
     margin-bottom: 0;
 }
 
 .sub-text2{
-    color: rgba(255, 255, 255, 0.5);
+    color: rgb(99, 89, 89);
     font-size: 17px;
     line-height: 27px;
     font-weight: 400;
@@ -66,7 +66,7 @@ table{
 
 
 .nav-item{
-    color: rgba(255, 255, 255, 0.671);
+    color: rgb(99, 89, 89);
     text-align: center;
     font-size: 15px;
     font-weight: 500;
@@ -74,7 +74,7 @@ table{
 }
 
 .nav-item:hover{
-    color: #f0f0f0;
+    color: rgb(99, 89, 89);
 
 }
 

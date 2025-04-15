@@ -12,10 +12,36 @@
 
 
     <title>Login</title>
+    <a href="index.html" class="back-button"><i class="fa fa-arrow-left"></i> Back</a>
+
+    <style>
+    .back-button {
+        position: absolute;
+        top: 1px;
+        /* moved higher */
+        left: 1px;
+        /* moved more to the left */
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+    </style>
+
     <style>
     td.label-td {
         position: relative;
     }
+
+
 
     .toggle-password {
         position: absolute;
@@ -29,7 +55,10 @@
     </style>
 </head>
 
-<body><?php session_start();
+<body>
+
+
+    <?php session_start();
 
     $_SESSION["user"]="";
     $_SESSION["usertype"]="";

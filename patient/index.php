@@ -110,7 +110,9 @@
 
     <tr class="menu-row">
         <td class="menu-btn menu-icon-session">
+            <!-- <a href="schedule.php" class="non-style-link-menu"> -->
             <a href="schedule.php" class="non-style-link-menu">
+
                 <div>
                     <p class="menu-text">Scheduled Sessions</p>
                 </div>
@@ -263,12 +265,12 @@
                                                 style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                         </div>
                                     </td>
-                                    <td style="width: 25%;">
+                                    <!--<td style="width: 25%;">
                                         <div class="dashboard-items"
                                             style="padding:20px;margin:auto;width:95%;display: flex;">
                                             <div>
                                                 <div class="h1-dashboard">
-                                                    <?php    echo $patientrow->num_rows  ?>
+                                                <?php    echo $patientrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
                                                     All Patients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -277,7 +279,7 @@
                                             <div class="btn-icon-back dashboard-icons"
                                                 style="background-image: url('../img/icons/patients-hover.svg');"></div>
                                         </div>
-                                    </td>
+                </td>-->
                                 </tr>
                                 <tr>
                                     <td style="width: 25%;">

@@ -34,24 +34,37 @@
     <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
 
     <?php
-    session_start();
-    $_SESSION["user"] = "";
-    $_SESSION["usertype"] = "";
-    date_default_timezone_set('Asia/Kathmandu');
-    $date = date('Y-m-d');
-    $_SESSION["date"] = $date;
+session_start();
+$_SESSION["user"] = "";
+$_SESSION["usertype"] = "";
+date_default_timezone_set('Asia/Kathmandu');
+$date = date('Y-m-d');
+$_SESSION["date"] = $date;
 
-    if ($_POST) {
-        $_SESSION["personal"] = array(
-            'fname' => $_POST['fname'],
-            'lname' => $_POST['lname'],
-            'address' => $_POST['address'],
-            'dob' => $_POST['dob']
-        );
-        print_r($_SESSION["personal"]);
-        header("location: create-account.php");
+$old = ['fname' => '', 'lname' => '', 'address' => '', 'dob' => ''];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $errors = false;
+
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $address = trim($_POST['address']);
+    $dob = $_POST['dob'];
+
+    $old = compact('fname', 'lname', 'address', 'dob');
+
+    if (!preg_match("/^[A-Za-z]{3,}$/", $fname)) $errors = true;
+    if (!preg_match("/^[A-Za-z]{3,}$/", $lname)) $errors = true;
+    if (empty($address) || empty($dob)) $errors = true;
+
+    if (!$errors) {
+        $_SESSION["personal"] = $old;
+        header("Location: create-account.php");
+        exit();
     }
-    ?>
+}
+?>
+
 
     <center>
         <div class="container">
@@ -90,7 +103,8 @@
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <label for="dob" class="form-label">Date of Birth: </label>
+                        <label for="dob" class="form-label">Date of Birth: <br> (You have to be atleast 16 years old to
+                            register.)</label>
                     </td>
                 </tr>
                 <tr>
@@ -152,6 +166,33 @@
         });
     });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dobInput = document.querySelector('input[name="dob"]');
+        const today = new Date();
+
+        // Calculate max DOB (16 years ago)
+        const maxDate = new Date();
+        maxDate.setFullYear(today.getFullYear() - 16);
+
+        // Optional: Minimum age limit (e.g., someone can’t be 120 years old!)
+        const minDate = new Date();
+        minDate.setFullYear(today.getFullYear() - 100);
+
+        // Format YYYY-MM-DD
+        const toDateInputFormat = (date) => {
+            const yyyy = date.getFullYear();
+            const mm = ('0' + (date.getMonth() + 1)).slice(-2);
+            const dd = ('0' + date.getDate()).slice(-2);
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        dobInput.max = toDateInputFormat(maxDate);
+        dobInput.min = toDateInputFormat(minDate);
+    });
+    </script>
+
+
 </body>
 
 </html>

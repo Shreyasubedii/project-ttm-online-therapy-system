@@ -139,7 +139,9 @@ if ($_POST) {
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <input type="email" name="newemail" class="input-text" placeholder="Email Address" required>
+                        <input type="email" name="newemail" class="input-text" placeholder="Email Address" required
+                            value="<?php if ($_POST) { echo htmlspecialchars($_POST['newemail']); } ?>">
+
                     </td>
                 </tr>
                 <tr>
@@ -149,18 +151,25 @@ if ($_POST) {
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <input type="tel" name="tele" class="input-text" placeholder="ex: 9876155141" required>
+                        <input type="tel" name="tele" class="input-text" placeholder="ex: 9876155141" required
+                            value="<?php if ($_POST) { echo htmlspecialchars($_POST['tele']); } ?>">
+
                     </td>
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <label for="newpassword" class="form-label">Create New Password: </label>
+                        <label for="newpassword" class="form-label">Create New Password: <br> (Password must be at least
+                            8 characters long and include at least one uppercase, lowercase, a number, and a special
+                            character.)
+                        </label>
                     </td>
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
                         <input type="password" id="newpassword" name="newpassword" class="input-text"
-                            placeholder="New Password" required>
+                            placeholder="New Password" required
+                            value="<?php if ($_POST) { echo htmlspecialchars($_POST['newpassword']); } ?>">
+
                         <span class="toggle-password" onclick="togglePassword('newpassword', 'eye-icon1')">
                             <i id="eye-icon1" class="fa fa-eye"></i>
                         </span>
@@ -174,11 +183,14 @@ if ($_POST) {
                 </tr>
                 <tr>
                     <td class="label-td" colspan="2">
-                        <input type="password" name="cpassword" class="input-text" placeholder="Confirm Password"
-                            required>
+                        <input type="password" id="cpassword" name="cpassword" class="input-text"
+                            placeholder="Confirm Password" required
+                            value="<?php if ($_POST) { echo htmlspecialchars($_POST['cpassword']); } ?>">
+
                         <span class="toggle-password" onclick="togglePassword('cpassword', 'eye-icon2')">
                             <i id="eye-icon2" class="fa fa-eye"></i>
                         </span>
+
                     </td>
                 </tr>
                 <style>
@@ -206,6 +218,7 @@ if ($_POST) {
                     }
                 }
                 </script>
+
                 <tr>
                     <td colspan="2">
                         <?php echo $error ?>
