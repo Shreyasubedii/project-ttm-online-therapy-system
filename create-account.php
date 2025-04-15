@@ -8,16 +8,55 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <title>Create Account</title>
+
     <style>
-    .container {
-        animation: transitionIn-X 0.5s;
+    .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+
+    td.label-td {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 55%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 13px;
+        color: #666;
     }
     </style>
 </head>
+<style>
+.container {
+    animation: transitionIn-X 0.5s;
+}
+</style>
+
+</head>
 
 <body>
+    <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
+
     <?php
 
 session_start();
@@ -122,6 +161,10 @@ if ($_POST) {
                     <td class="label-td" colspan="2">
                         <input type="password" id="newpassword" name="newpassword" class="input-text"
                             placeholder="New Password" required>
+                        <span class="toggle-password" onclick="togglePassword('newpassword', 'eye-icon1')">
+                            <i id="eye-icon1" class="fa fa-eye"></i>
+                        </span>
+
                     </td>
                 </tr>
                 <tr>
@@ -133,8 +176,36 @@ if ($_POST) {
                     <td class="label-td" colspan="2">
                         <input type="password" name="cpassword" class="input-text" placeholder="Confirm Password"
                             required>
+                        <span class="toggle-password" onclick="togglePassword('cpassword', 'eye-icon2')">
+                            <i id="eye-icon2" class="fa fa-eye"></i>
+                        </span>
                     </td>
                 </tr>
+                <style>
+                .toggle-password {
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                }
+                </style>
+
+                <script>
+                function togglePassword(fieldId, iconId) {
+                    const passwordField = document.getElementById(fieldId);
+                    const icon = document.getElementById(iconId);
+                    if (passwordField.type === "password") {
+                        passwordField.type = "text";
+                        icon.classList.remove("fa-eye");
+                        icon.classList.add("fa-eye-slash");
+                    } else {
+                        passwordField.type = "password";
+                        icon.classList.remove("fa-eye-slash");
+                        icon.classList.add("fa-eye");
+                    }
+                }
+                </script>
                 <tr>
                     <td colspan="2">
                         <?php echo $error ?>
@@ -161,6 +232,17 @@ if ($_POST) {
             </table>
         </div>
     </center>
+    <script>
+    function togglePassword(fieldId, iconId) {
+        const passwordField = document.getElementById(fieldId);
+        const icon = document.getElementById(iconId);
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
+    </script>
 </body>
 
 </html>

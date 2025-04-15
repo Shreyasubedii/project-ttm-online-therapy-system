@@ -2,8 +2,6 @@
 <html lang="en">
 
 <head>
-
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +9,30 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/signup.css">
     <title>Sign Up</title>
+    <style>
+    .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+    </style>
 </head>
 
 <body>
+    <a href="javascript:history.back()" class="back-button">&#8592; Back</a>
+
     <?php
     session_start();
     $_SESSION["user"] = "";
@@ -69,7 +88,6 @@
                         <input type="text" name="address" class="input-text" placeholder="Address" required>
                     </td>
                 </tr>
-
                 <tr>
                     <td class="label-td" colspan="2">
                         <label for="dob" class="form-label">Date of Birth: </label>
@@ -80,7 +98,6 @@
                         <input type="date" name="dob" class="input-text" required>
                     </td>
                 </tr>
-
                 <tr>
                     <td>
                         <input type="reset" value="Reset" class="login-btn btn-primary-soft btn">
@@ -97,7 +114,6 @@
                         <br><br><br>
                     </td>
                 </tr>
-
                 </form>
             </table>
         </div>
@@ -113,8 +129,6 @@
 
         form.addEventListener('submit', function(event) {
             let isValid = true;
-
-            // First Name Validation: Only alphabets, min 3 characters
             const namePattern = /^[A-Za-z]+$/;
             if (!namePattern.test(fnameInput.value) || fnameInput.value.length < 3) {
                 fnameError.textContent =
@@ -124,8 +138,6 @@
             } else {
                 fnameError.style.display = 'none';
             }
-
-            // Last Name Validation: Only alphabets, min 3 characters
             if (!namePattern.test(lnameInput.value) || lnameInput.value.length < 3) {
                 lnameError.textContent =
                     "Please enter a valid last name (only alphabets, at least 3 characters).";
@@ -134,8 +146,6 @@
             } else {
                 lnameError.style.display = 'none';
             }
-
-            // Prevent form submission if any validation fails
             if (!isValid) {
                 event.preventDefault();
             }
