@@ -67,7 +67,7 @@
     
 
 
-    date_default_timezone_set('Asia/Kolkata');
+    date_default_timezone_set('Asia/kathmandu');
 
     $today = date('Y-m-d');
 
@@ -199,9 +199,7 @@
                         Today's Date
                     </p>
                     <p class="heading-sub12" style="padding: 0;margin: 0;">
-                        <?php 
-
-                                
+                        <?php   
                                 echo $today;
 
                                 
@@ -216,8 +214,6 @@
 
 
             </tr>
-
-
             <tr>
                 <td colspan="4" style="padding-top:10px;width: 100%;">
                     <!-- <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49);font-weight:400;">Scheduled Sessions / Booking / <b>Review Booking</b></p> -->
@@ -225,9 +221,6 @@
                 </td>
 
             </tr>
-
-
-
             <tr>
                 <td colspan="4">
                     <center>
@@ -295,7 +288,7 @@
                                                             Session Title: '.$title.'<br>
                                                             Session Scheduled Date: '.$scheduledate.'<br>
                                                             Session Starts : '.$scheduletime.'<br>
-                                                            Channeling fee : <b>LKR.2 000.00</b>
+                                                            Channeling fee : <b>NPR.2000.00</b>
 
                                                         </div>
                                                         <br>
@@ -335,9 +328,6 @@
                                         </tr>
                                         '; 
                                         
-
-
-
 
                                 }
 

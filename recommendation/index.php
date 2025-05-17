@@ -12,11 +12,11 @@
     }
 
     function getFrequencyVector($words){
-        $vector == [];
+        $vector = [];
         foreach($words as $word){
             $vector[$word] = isset($vector[$word]) ? $vector[$word] + 1 : 1;
         }
-        return $vector;
+        return $vector;  
     }
 
     function cosine_similarity($vector1, $vector2){

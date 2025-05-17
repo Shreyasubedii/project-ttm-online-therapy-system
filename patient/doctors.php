@@ -354,7 +354,7 @@
                         <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            TTM Web App<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
@@ -388,11 +388,7 @@
                                 '.$email.'<br><br>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
-                                </td>
-                            </tr>
+                           
                            
                             <tr>
                                 <td class="label-td" colspan="2">
