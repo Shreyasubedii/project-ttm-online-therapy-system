@@ -15,21 +15,36 @@
 
     $userResult = $database->query("SELECT * FROM patient WHERE pemail = '$useremail'");
     $userFetch = $userResult->fetch_assoc();
-    $userid = $userfetch["pid"];
+    $userid = $userFetch["pid"];
     
     
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $doc_id = $_POST["docid"];
-
-        $result = $database->query("SELECT * from doctor LEFT JOIN specialties on doctor.specialties = specialties.id where docid=$doc_id");
-
-        $doc_data = $result->fetch_assoc();
-
-        var_dump($doc_data);
+        if(isset($_POST["docid"])) {
+            $doc_id = $_POST["docid"];
+            
+            // Get the latest schedule for this doctor
+            $result = $database->query("SELECT s.scheduleid, s.title, s.scheduledate, s.scheduletime, s.nop, d.docname, d.docemail 
+                                      FROM schedule s 
+                                      INNER JOIN doctor d ON s.docid = d.docid 
+                                      WHERE s.docid = '$doc_id' 
+                                      AND s.scheduledate >= CURDATE() 
+                                      ORDER BY s.scheduledate ASC, s.scheduletime ASC 
+                                      LIMIT 1");
+            
+            if ($result && $result->num_rows > 0) {
+                $schedule = $result->fetch_assoc();
+                // Redirect to booking page with schedule ID
+                header("location: booking.php?id=" . $schedule['scheduleid']);
+                exit();
+            } else {
+                // No available schedules found
+                header("location: schedule.php?error=no_schedule");
+                exit();
+            }
+        }
     }
-
-
-
-
-
+    
+    // If we get here, something went wrong
+    header("location: schedule.php");
+    exit();
 ?>

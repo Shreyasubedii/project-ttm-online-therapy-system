@@ -33,12 +33,33 @@
             $apponum=$_POST["apponum"];
             $scheduleid=$_POST["scheduleid"];
             $date=$_POST["date"];
-            $scheduleid=$_POST["scheduleid"];
-            $sql2="insert into appointment(pid,apponum,scheduleid,appodate) values ($userid,$apponum,$scheduleid,'$date')";
-            $result= $database->query($sql2);
-            //echo $apponom;
-            header("location: appointment.php?action=booking-added&id=".$apponum."&titleget=none");
-
+            
+            // Get session details for payment
+            $sql = "SELECT s.title, s.scheduledate, s.scheduletime, d.docname 
+                    FROM schedule s 
+                    INNER JOIN doctor d ON s.docid = d.docid 
+                    WHERE s.scheduleid = ?";
+            $stmt = $database->prepare($sql);
+            $stmt->bind_param("i", $scheduleid);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $session = $result->fetch_assoc();
+            
+            // Store booking details in session for after payment
+            $_SESSION['pending_booking'] = [
+                'apponum' => $apponum,
+                'scheduleid' => $scheduleid,
+                'date' => $date,
+                'userid' => $userid,
+                'title' => $session['title'],
+                'docname' => $session['docname'],
+                'scheduledate' => $session['scheduledate'],
+                'scheduletime' => $session['scheduletime']
+            ];
+            
+            // Redirect to eSewa payment
+            header("location: esewa-payment.php");
+            exit();
         }
     }
  ?>

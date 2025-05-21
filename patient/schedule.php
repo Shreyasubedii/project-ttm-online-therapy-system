@@ -161,6 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <li>
                             <form action="addSchedule.php" method="post">
                                 <h3><?php echo $doctor['docname']; ?></h3>
+                                <input type="hidden" name="docid" value="<?php echo $doctor['docid']; ?>" />
                                 <input type="submit" value="Schedule Session" />
                             </form>
                         </li>
