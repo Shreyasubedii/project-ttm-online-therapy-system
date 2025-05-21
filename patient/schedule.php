@@ -47,7 +47,7 @@ $userfetch = $result->fetch_assoc();
 $userid = $userfetch["pid"];
 $username = $userfetch["pname"];
 
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Asia/kathmandu');
 $today = date('Y-m-d');
 
 $recommended_doctors = [];
@@ -134,17 +134,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
 
         <div class="dash-body" style="margin-top:15px;">
-            
+
             <?php if($recommended_doctors === []) { ?>
             <center>
                 <table border="0" width="80%" class="sub-table scrolldown" style="padding:50px;border:none;">
                     <tr>
                         <td colspan="2">
-                            <p class="heading-main12">Submit Your Details</p>
-                            <p class="heading-sub12">Please fill the form below.</p>
+                            <p class="heading-main12">Submit some description so we can help you find a best therapist
+                                for yourself.
+                            </p>
+                            <!-- <p class="heading-sub12">Please fill the form below.</p> -->
                             <br>
                             <form method="post">
-                                <label for="description" class="form-label">Description:</label><br>
+                                <label for="description" class="form-label">Give us your short Problem
+                                    Description: </label><br>
                                 <textarea name="description" rows="5" class="input-text" required></textarea><br><br>
 
                                 <input type="submit" name="submit" value="Submit" class="login-btn btn-primary btn">
@@ -158,12 +161,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>Here are the doctors recommended for you: </h2>
                 <ul>
                     <?php foreach($recommended_doctors as $doctor) { ?>
-                        <li>
-                            <form action="addSchedule.php" method="post">
-                                <h3><?php echo $doctor['docname']; ?></h3>
-                                <input type="submit" value="Schedule Session" />
-                            </form>
-                        </li>
+                    <li>
+                        <form action="addSchedule.php" method="post">
+                            <h3><?php echo $doctor['docname']; ?></h3>
+                            <input type="submit" value="Schedule Session" />
+                        </form>
+                    </li>
                     <?php } ?>
                 </ul>
             </div>

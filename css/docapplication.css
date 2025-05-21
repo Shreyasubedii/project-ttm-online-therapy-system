@@ -2,7 +2,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     font-family: 'Poppins', sans-serif;
     background-image: url(../img/img18.png);
     background-repeat: no-repeat;
@@ -12,43 +12,44 @@ html, body {
     color: #333;
 }
 
+/* Page Layout */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Container Styling */
-.container {
-    width: 50%;
-    background-color: white;
-    border: 1px solid rgb(235, 235, 235);
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 3px 5px 0 rgba(240, 240, 240, 0.3);
-    animation: transitionIn-Y-over 0.5s;
-
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Form Header */
+/* Heading Style */
 h2 {
     text-align: center;
     color: #0056b3;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 40px 0 20px;
+    padding: 0 20px;
 }
 
-/* Labels */
+/* Form Styling */
+form {
+    width: 50%;
+    background-color: white;
+    border: 1px solid rgb(235, 235, 235);
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Label Styling */
 label {
     font-size: 16px;
     color: rgb(44, 44, 44);
     font-weight: 500;
     align-self: flex-start;
-    margin-left: 10%;
+    margin: 5px 0 5px 10%;
 }
 
 /* Input Fields */
@@ -57,12 +58,11 @@ input[type="email"],
 textarea, 
 input[type="file"] {
     width: 80%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    padding: 7px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Submit Button */
@@ -77,59 +77,24 @@ input[type="submit"] {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* Text Centering */
-td {
-    text-align: center;
-}
-
-/* Headings */
-.header-text {
-    font-weight: 600;
-    font-size: 30px;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.sub-text {
-    font-size: 15px;
-    color: rgb(138, 138, 138);
-    text-align: center;
-}
-
-/* Form Label Alignment */
-.form-label {
-    color: rgb(44, 44, 44);
+/* Error Box */
+.error-box {
+    color: red;
+    font-size: 13px;
+    width: 80%;
     text-align: left;
-    font-size: 14px;
-}
-
-.label-td {
-    text-align: left;
-    padding-top: 10px;
-}
-
-/* Link Styling */
-.hover-link1 {
-    font-weight: bold;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.hover-link1:hover {
-    opacity: 0.8;
-    transition: 0.5s;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .container {
+    form {
         width: 90%;
         padding: 15px;
     }
@@ -141,8 +106,9 @@ td {
     input[type="text"], 
     input[type="email"], 
     textarea, 
-    input[type="file"],
-    input[type="submit"] {
+    input[type="file"], 
+    input[type="submit"],
+    .error-box {
         width: 90%;
     }
 }
