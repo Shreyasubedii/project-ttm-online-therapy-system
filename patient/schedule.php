@@ -161,12 +161,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>Here are the doctors recommended for you: </h2>
                 <ul>
                     <?php foreach($recommended_doctors as $doctor) { ?>
+<<<<<<< Updated upstream
                     <li>
                         <form action="addSchedule.php" method="post">
                             <h3><?php echo $doctor['docname']; ?></h3>
                             <input type="submit" value="Schedule Session" />
                         </form>
                     </li>
+=======
+                        <li>
+                            <form action="addSchedule.php" method="post">
+                                <h3><?php echo $doctor['docname']; ?></h3>
+                                <input type="hidden" name="docid" value="<?php echo $doctor['docid']; ?>" />
+                                <input type="submit" value="Schedule Session" />
+                            </form>
+                        </li>
+>>>>>>> Stashed changes
                     <?php } ?>
                 </ul>
             </div>
